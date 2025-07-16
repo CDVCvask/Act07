@@ -46,8 +46,8 @@ try:
                                             if project < 0 or project >20:
                                                 print("La nota ingresada no es valida")
                                             else:
-                                                subjects[subject_name] = {"Tarea": homework, "Examen": exam, "Projecto": project,"number": nsubject}
-                                                students[carnet] = {"name": name, "age": age, "carrer": carrer, "subject": subjects}
+                                                subjects[subject_name] = {"Tarea": homework, "Examen": exam, "Projecto": project}
+                                                students[carnet] = {"name": name, "age": age, "carrer": carrer, "subject": subjects,"number": nsubject}
                                                 count = count + 1
                                                 allow1 = True
             case 2:
@@ -58,16 +58,17 @@ try:
                     Total = 0
                     print("Todos los estudiantes: ")
                     for code,value in students.items():
+                        divide = value["number"]
                         print(f"Estudiante {cont1}:")
                         print(f"Carnet: {code} Nombre: {value['name']}, Edad: {value['age']}, Carrera: {value['carrer']}")
                         print(f"Cursos del estudiante {cont1}:")
                         for code, grades in value["subject"].items():
                             print(f"{code}: Nota Tareas: {grades['Tarea']}, Nota Examen: {grades['Examen']}, Nota Proyecto: {grades['Projecto']}")
-                            avarage = {(grades['Tarea'] + grades['Examen'] + grades['Projecto'])/3}
-                            print(f"Promedio del curso = {avarage}")
+                            avarage = (grades['Tarea'] + grades['Examen'] + grades['Projecto'])
+                            print(f"Nota total del curso = {avarage}")
                             Total = Total + avarage
                         cont1 = cont1 + 1
-                        print(f"Promedio total del estudiante = {Total/cont1}")
+                        print(f"Promedio total del estudiante = {Total/divide}")
             case 3:
                 if allow1 == False:
                     print("Aún no hay ningún dato que buscar")
@@ -75,16 +76,18 @@ try:
                     look = input("Ingrese el carnet del estudiante que desea encontrar: ")
                     if look in students:
                         print("El estudiante si existe")
+                        Total = 0
                         for code, value in students.items():
-                            print(f"Estudiante {cont1}:")
-                            print(
-                                f"Carnet: {code} Nombre: {value['name']}, Edad: {value['age']}, Carrera: {value['carrer']}")
-                            print(f"Cursos del estudiante {cont1}:")
+                            divide = value["number"]
+                            print(f"Carnet: {code} Nombre: {value['name']}, Edad: {value['age']}, Carrera: {value['carrer']}")
+                            print(f"Cursos del estudiante :")
                             for code, grades in value["subject"].items():
                                 print(
                                     f"{code}: Nota Tareas: {grades['Tarea']}, Nota Examen: {grades['Examen']}, Nota Proyecto: {grades['Projecto']}")
-                                avarage = {(grades['Tarea'] + grades['Examen'] + grades['Projecto']) / 3}
-                                print(f"Promedio del curso = {avarage}")
+                                avarage = (grades['Tarea'] + grades['Examen'] + grades['Projecto'])
+                                print(f"Nota total del curso = {avarage}")
+                                Total = Total + avarage
+                            print(f"Promedio total del estudiante = {Total / divide}")
                     else:
                         print("El estudiante no existe")
             case 4:
