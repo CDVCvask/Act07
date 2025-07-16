@@ -36,7 +36,11 @@ try:
                 if allow1 == False:
                     print("Aún no hay ningún dato que mostrar")
                 else:
-                    print("Ahora si ")
+                    cont1 = 1
+                    print("Todos los estudiantes: ")
+                    for code,value in students.items():
+                        print(f"Estudiante {cont1}:")
+                        print(f"Carnet: {code} Nombre: {value['name']}, Edad: {value['age']}, Carrera: {value['carrer']}")
             case 3:
                 if allow1 == False:
                     print("Aún no hay ningún dato que buscar")
