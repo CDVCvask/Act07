@@ -8,6 +8,7 @@ students = {}
 allow = False
 allow1 = False
 count = 0
+subjects = {}
 try:
     while allow == False:
         Menu()
@@ -23,8 +24,14 @@ try:
                         name = input("Ingrese el nombre del estudiante: ")
                         age = int(input("Ingrese la edad del estudiante: "))
                         carrer = input("Ingrese la carrera del estudiante: ")
-                        subjects = int(input("Ingrese cuantos cursos lleva el estudiante: "))
-
+                        nsubject = int(input("Ingrese cuantos cursos lleva el estudiante: "))
+                        for j in range(nsubject):
+                            subject_name = input("Ingrese el nombre del curso: ")
+                            homework = int(input("Ingrese la Nota de tarea del estudiante: "))
+                            exam = int(input("Ingrese la nota del examen del estudiante: "))
+                            project = int(input("Ingrese la nota del projecto del estudiante: "))
+                            subjects[subject_name] = {"Tarea": homework, "Examen": exam, "Projecto": project}
+                        students[carnet] = {"name": name, "age": age, "carrer": carrer, "subject": subjects}
             case 2:
                 if allow1 == False:
                     print("Aún no hay ningún dato que mostrar")
