@@ -44,14 +44,14 @@ try:
                         print(f"Estudiante {cont1}:")
                         print(f"Carnet: {code} Nombre: {value['name']}, Edad: {value['age']}, Carrera: {value['carrer']}")
                         print(f"Cursos estudiante {cont1}:")
-                        for code,value in subjects.items():
-
+                        for code in value["subject"] :
+                            print(f"{code}: Nota Tareas: {code['homework']}, Nota Examen: {code['exam']}, Nota Proyecto: {code['project']}")
                         cont1 = cont1 + 1
             case 3:
                 if allow1 == False:
                     print("Aún no hay ningún dato que buscar")
                 else:
-                    print("Ahora si ")
+                    look = input("Ingrese el carnet del estudiante que desea encontrar: ")
             case 4:
                 print("Gracias por utilizar el programa")
                 break
