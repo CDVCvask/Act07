@@ -30,8 +30,10 @@ try:
                             homework = int(input("Ingrese la Nota de tarea del estudiante: "))
                             exam = int(input("Ingrese la nota del examen del estudiante: "))
                             project = int(input("Ingrese la nota del projecto del estudiante: "))
-                            subjects[subject_name] = {"Tarea": homework, "Examen": exam, "Projecto": project}
+                            subjects[subject_name] = {"Tarea": homework, "Examen": exam, "Projecto": project,"number": nsubject}
                         students[carnet] = {"name": name, "age": age, "carrer": carrer, "subject": subjects}
+                        count = count + 1
+                        allow1 = True
             case 2:
                 if allow1 == False:
                     print("Aún no hay ningún dato que mostrar")
@@ -41,6 +43,10 @@ try:
                     for code,value in students.items():
                         print(f"Estudiante {cont1}:")
                         print(f"Carnet: {code} Nombre: {value['name']}, Edad: {value['age']}, Carrera: {value['carrer']}")
+                        print(f"Cursos estudiante {cont1}:")
+                        for code,value in subjects.items():
+
+                        cont1 = cont1 + 1
             case 3:
                 if allow1 == False:
                     print("Aún no hay ningún dato que buscar")
