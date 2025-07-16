@@ -20,6 +20,7 @@ try:
                     print("La cantidad ingresada no es valida")
                 else:
                     for i in range(number):
+                        print(f"Estudiante {count + 1}")
                         carnet = f"S{count}"
                         name = input("Ingrese el nombre del estudiante: ")
                         age = int(input("Ingrese la edad del estudiante: "))
@@ -34,12 +35,21 @@ try:
                                 for j in range(nsubject):
                                     subject_name = input("Ingrese el nombre del curso: ")
                                     homework = int(input("Ingrese la Nota de tarea del estudiante: "))
-                                    exam = int(input("Ingrese la nota del examen del estudiante: "))
-                                    project = int(input("Ingrese la nota del projecto del estudiante: "))
-                                    subjects[subject_name] = {"Tarea": homework, "Examen": exam, "Projecto": project,"number": nsubject}
-                                students[carnet] = {"name": name, "age": age, "carrer": carrer, "subject": subjects}
-                                count = count + 1
-                                allow1 = True
+                                    if homework < 0 or homework>60:
+                                        print("La nota ingresada no es valida")
+                                    else:
+                                        exam = int(input("Ingrese la nota del examen del estudiante: "))
+                                        if exam < 0 or exam >20:
+                                            print("La nota ingresada no es valida")
+                                        else:
+                                            project = int(input("Ingrese la nota del projecto del estudiante: "))
+                                            if project < 0 or project >20:
+                                                print("La nota ingresada no es valida")
+                                            else:
+                                                subjects[subject_name] = {"Tarea": homework, "Examen": exam, "Projecto": project,"number": nsubject}
+                                                students[carnet] = {"name": name, "age": age, "carrer": carrer, "subject": subjects}
+                                                count = count + 1
+                                                allow1 = True
             case 2:
                 if allow1 == False:
                     print("Aún no hay ningún dato que mostrar")
@@ -63,6 +73,20 @@ try:
                     print("Aún no hay ningún dato que buscar")
                 else:
                     look = input("Ingrese el carnet del estudiante que desea encontrar: ")
+                    if look in students:
+                        print("El estudiante si existe")
+                        for code, value in students.items():
+                            print(f"Estudiante {cont1}:")
+                            print(
+                                f"Carnet: {code} Nombre: {value['name']}, Edad: {value['age']}, Carrera: {value['carrer']}")
+                            print(f"Cursos del estudiante {cont1}:")
+                            for code, grades in value["subject"].items():
+                                print(
+                                    f"{code}: Nota Tareas: {grades['Tarea']}, Nota Examen: {grades['Examen']}, Nota Proyecto: {grades['Projecto']}")
+                                avarage = {(grades['Tarea'] + grades['Examen'] + grades['Projecto']) / 3}
+                                print(f"Promedio del curso = {avarage}")
+                    else:
+                        print("El estudiante no existe")
             case 4:
                 print("Gracias por utilizar el programa")
                 break
